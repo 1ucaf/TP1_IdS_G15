@@ -4,11 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TP1IdS_G15Application;
+using TP1IdS_G15Application.Model;
 
 namespace TP1IdS_G15WebService.Controllers
 {
     public class VentasController : ApiController
     {
+        VentasManager AppLayer = new VentasManager();
         // GET: api/Ventas
         public IEnumerable<string> Get()
         {
@@ -22,8 +25,9 @@ namespace TP1IdS_G15WebService.Controllers
         }
 
         // POST: api/Ventas
-        public void Post([FromBody]string value)
+        public void Post([FromBody]VentaDTO venta)
         {
+            AppLayer.Save(venta);
         }
 
         // PUT: api/Ventas/5
@@ -34,6 +38,14 @@ namespace TP1IdS_G15WebService.Controllers
         // DELETE: api/Ventas/5
         public void Delete(int id)
         {
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                AppLayer.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

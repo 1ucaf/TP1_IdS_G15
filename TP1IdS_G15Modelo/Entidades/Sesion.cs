@@ -12,7 +12,10 @@ namespace TP1IdS_G15Modelo.Entidades
         [Key]
         public int Id { get; set; }
         public bool IsActive { get; set; }
-        public int UserId { get; set; }
+        public DateTime DateTime { get; set; }
+        public string UserName { get; set; }
         public virtual User User { get; set; }
+        public int PuntoDeVentaId { get; set; }
+        public virtual PuntoDeVenta PuntoDeVenta { get; set; }
     }
 }

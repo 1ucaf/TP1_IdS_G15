@@ -56,6 +56,22 @@
     <Compile Include="Migrations\202202282347087_InitialMigration.designer.cs">
       <DependentUpon>202202282347087_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203010109058_sessions.cs" />
+    <Compile Include="Migrations\202203010109058_sessions.designer.cs">
+      <DependentUpon>202203010109058_sessions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203011512295_Sessions1.cs" />
+    <Compile Include="Migrations\202203011512295_Sessions1.designer.cs">
+      <DependentUpon>202203011512295_Sessions1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203011555101_Sessions_UserName.cs" />
+    <Compile Include="Migrations\202203011555101_Sessions_UserName.designer.cs">
+      <DependentUpon>202203011555101_Sessions_UserName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203011643348_Sessions_DateTime.cs" />
+    <Compile Include="Migrations\202203011643348_Sessions_DateTime.designer.cs">
+      <DependentUpon>202203011643348_Sessions_DateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,6 +88,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202202282347087_InitialMigration.resx">
       <DependentUpon>202202282347087_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203010109058_sessions.resx">
+      <DependentUpon>202203010109058_sessions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203011512295_Sessions1.resx">
+      <DependentUpon>202203011512295_Sessions1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203011555101_Sessions_UserName.resx">
+      <DependentUpon>202203011555101_Sessions_UserName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203011643348_Sessions_DateTime.resx">
+      <DependentUpon>202203011643348_Sessions_DateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP1IdS_G15AccesoADatos;
+using TP1IdS_G15Application.Model;
 using TP1IdS_G15Modelo.Entidades;
 
 namespace TP1IdS_G15Application
@@ -12,24 +14,24 @@ namespace TP1IdS_G15Application
     {
         private DataContext db = new DataContext();
 
-        //public Venta Save(Venta venta)
-        //{
-            //Venta Venta;
-            //if (venta.Id == 0)
-            //{
-            //    Venta = new Venta();
-            //    Venta.Id = 0;
-
-            //    db.Marcas.Add(Venta);
-            //}
-            //else
-            //{
-            //    Venta = db.Ventas.Find(venta.Id);
-            //    db.Entry(Venta).State = EntityState.Modified;
-            //}
-            //db.SaveChanges();
-            //return Venta;
-        //}
+        public Venta Save(VentaDTO venta)
+        {
+            Venta Venta;
+            if (venta.Id == 0)
+            {
+                Venta = new Venta();
+                Venta.Id = 0;
+                Venta.ClienteId = venta.ClienteId;
+                db.Ventas.Add(Venta);
+            }
+            else
+            {
+                Venta = db.Ventas.Find(venta.Id);
+                db.Entry(Venta).State = EntityState.Modified;
+            }
+            db.SaveChanges();
+            return Venta;
+        }
 
         public Marca DeleteMarca(int id)
         {

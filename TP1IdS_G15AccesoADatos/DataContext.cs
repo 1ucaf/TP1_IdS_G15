@@ -17,6 +17,8 @@ namespace TP1IdS_G15AccesoADatos
         }
         protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Sesion>()
+                .ToTable("Sesiones");
             modelBuilder.Entity<Producto>()
                 .ToTable("Productos");
             modelBuilder.Entity<Marca>()
@@ -41,10 +43,9 @@ namespace TP1IdS_G15AccesoADatos
                 .ToTable("Colores");
             modelBuilder.Entity<Talle>()
                 .ToTable("Talles");
-            modelBuilder.Entity<Sesion>()
-                .ToTable("Sesiones");
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Sesion> Sesiones { get; set; }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Marca> Marcas { get; set; }
         public DbSet<Rubro> Rubros { get; set; }
