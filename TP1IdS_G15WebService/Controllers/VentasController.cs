@@ -27,7 +27,16 @@ namespace TP1IdS_G15WebService.Controllers
         // POST: api/Ventas
         public void Post([FromBody]VentaDTO venta)
         {
-            AppLayer.Save(venta);
+            string token = "";
+            try
+            {
+                token = Request.Headers.GetValues("Authorization").First();
+                AppLayer.Save(venta, token);
+            }
+            catch(Exception e)
+            {
+
+            }
         }
 
         // PUT: api/Ventas/5

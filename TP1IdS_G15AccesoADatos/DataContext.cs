@@ -15,12 +15,19 @@ namespace TP1IdS_G15AccesoADatos
         {
 
         }
-        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Sesion>()
                 .ToTable("Sesiones");
             modelBuilder.Entity<Producto>()
                 .ToTable("Productos");
+            modelBuilder.Entity<Producto>()
+                .Property(p => p.CodigoDeBarra)
+                .HasMaxLength(50);
+            modelBuilder.Entity<Producto>()
+                .HasIndex(p => p.CodigoDeBarra)
+                .IsUnique()
+                .IsClustered(false);
             modelBuilder.Entity<Marca>()
                 .ToTable("Marcas");
             modelBuilder.Entity<Rubro>()

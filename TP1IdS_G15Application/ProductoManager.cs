@@ -20,7 +20,7 @@ namespace TP1IdS_G15Application
             var marca = db.Marcas.Where(marc => marc.Id == productoDTO.MarcaId).ToList().First();
             var rubro = db.Rubros.Where(rubr => rubr.Id == productoDTO.RubroId).ToList().First();
             Producto producto;
-            if (productoDTO.CodigoDeBarra == 0)
+            if (productoDTO.ProductoId == 0)
             {
                 producto = new Producto(productoDTO.CodigoDeBarra, productoDTO.Descripcion, productoDTO.Costo, productoDTO.MargenDeGanancia, productoDTO.PorcentajeIVA, marca, rubro);
                 db.Productos.Add(producto);
@@ -65,7 +65,7 @@ namespace TP1IdS_G15Application
 
         private bool ProductoExists(int id)
         {
-            return db.Productos.Count(e => e.CodigoDeBarra == id) > 0;
+            return db.Productos.Count(e => e.Id == id) > 0;
         }
 
         public void Dispose()

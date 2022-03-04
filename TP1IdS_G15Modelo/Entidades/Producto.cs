@@ -13,8 +13,10 @@ namespace TP1IdS_G15Modelo.Entidades
     {
 
         #region members
-        private double _porcentajeIVA;
-        private double _margenDeGanancia;
+        [Column(TypeName = "money")]
+        private decimal _porcentajeIVA;
+        [Column(TypeName = "money")]
+        private decimal _margenDeGanancia;
         #endregion
 
         #region Constructors
@@ -22,7 +24,7 @@ namespace TP1IdS_G15Modelo.Entidades
         {
         }
 
-        public Producto(int _CodigoDeBarra, string _Descripcion, double _Costo, double _MargenDeGanancia, double _PorcentajeIVA, Marca _Marca, Rubro _Rubro)
+        public Producto(string _CodigoDeBarra, string _Descripcion, decimal _Costo, decimal _MargenDeGanancia, decimal _PorcentajeIVA, Marca _Marca, Rubro _Rubro)
         {
             CodigoDeBarra = _CodigoDeBarra;
             Descripcion = _Descripcion;
@@ -36,10 +38,12 @@ namespace TP1IdS_G15Modelo.Entidades
 
         #region properties
         [Key]
-        public int CodigoDeBarra { get; set; }
+        public int Id { get; set; }
+        public string CodigoDeBarra { get; set; }
         public string Descripcion { get; set; }
-        public double Costo { get; set; }
-        public double MargenDeGanancia
+        [Column(TypeName = "money")]
+        public decimal Costo { get; set; }
+        public decimal MargenDeGanancia
         {
             get
             {
@@ -50,14 +54,14 @@ namespace TP1IdS_G15Modelo.Entidades
                 _margenDeGanancia = (value / 100);
             }
         }
-        public double NetoGravado
+        public decimal NetoGravado
         {
             get
             {
                 return Costo + (Costo * _margenDeGanancia);
             }
         }
-        public double PorcentajeIVA
+        public decimal PorcentajeIVA
         {
             get
             {
@@ -69,14 +73,14 @@ namespace TP1IdS_G15Modelo.Entidades
                 _porcentajeIVA = (value / 100);
             }
         }
-        public double IVA
+        public decimal IVA
         {
             get
             {
                 return NetoGravado * _porcentajeIVA;
             }
         }
-        public double PrecioVenta
+        public decimal PrecioVenta
         {
             get
             {

@@ -12,7 +12,7 @@ namespace TP1IdS_G15Modelo.Entidades
         [Key]
         public int Legajo { get; set; }
         public string Nombre { get; set; }
-        public int UserId { get; set; }
+        public string UserName { get; set; }
         public virtual User User { get; set; }
         public int SucursalId { get; set; }
         public virtual Sucursal Sucursal { get; set; }

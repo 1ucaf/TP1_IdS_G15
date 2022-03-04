@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TP1IdS_G15AccesoADatos;
 using TP1IdS_G15Application.Model;
+using TP1IdS_G15Application.TokenHandlers;
 using TP1IdS_G15Modelo.Entidades;
 
 namespace TP1IdS_G15Application
@@ -14,23 +15,58 @@ namespace TP1IdS_G15Application
     {
         private DataContext db = new DataContext();
 
-        public Venta Save(VentaDTO venta)
+        public Venta Save(VentaDTO venta, string token)
         {
             Venta Venta;
-            if (venta.Id == 0)
+            try
             {
-                Venta = new Venta();
-                Venta.Id = 0;
-                Venta.ClienteId = venta.ClienteId;
+                Cliente c = db.Clientes.Find(venta.ClienteId);
+                string userName = TokenManager.ValidateToken(token);
+                Sesion s = db.Sesiones.Where(se => (se.UserName == userName && se.IsActive)).FirstOrDefault();
+                PuntoDeVenta pdv = s.PuntoDeVenta;
+                Empleado e = db.Empleados.Where(em => em.UserName == userName).FirstOrDefault();
+                TipoFactura tf = db.TiposDeFactura.Find(venta.TipoFacturaId);
+                List<LineaDeVenta> LineasDeVenta = new List<LineaDeVenta>();
+                decimal MontoTotal = 0;
+                foreach(LineaDeVentaDTO LdVdto in venta.LineasDeVenta)
+                {
+                    var p = db.Productos.Find(LdVdto.ProductoId);
+                    LineaDeVenta ldv = new LineaDeVenta()
+                    {
+                        ProductoId = LdVdto.ProductoId,
+                        Producto = p,
+                        MontoUnitario = p.PrecioVenta,
+                        Cantidad = LdVdto.Cantidad,
+                    };
+                    MontoTotal += ldv.SubTotal;
+                    LineasDeVenta.Add(ldv);
+                }
+
+                Venta = new Venta()
+                {
+                    Id = 0,
+                    ClienteId = venta.ClienteId,
+                    Cliente = c,
+                    PuntoDeVenta = pdv,
+                    PuntoDeVentaId = pdv.Id,
+                    Vendedor = e,
+                    EmpleadoId = e.Legajo,
+                    Fecha = DateTime.Now,
+                    MedioDePago = venta.MedioDePago,
+                    TipoFactura = tf,
+                    TipoFacturaId = venta.TipoFacturaId,
+                    Monto = (decimal)MontoTotal,
+                    LineasDeVentas = LineasDeVenta,
+                    NroFacturaAfip = 0,
+                };
                 db.Ventas.Add(Venta);
+                db.SaveChanges();
+                return Venta;
             }
-            else
+            catch (Exception e)
             {
-                Venta = db.Ventas.Find(venta.Id);
-                db.Entry(Venta).State = EntityState.Modified;
+                return null;
             }
-            db.SaveChanges();
-            return Venta;
         }
 
         public Marca DeleteMarca(int id)

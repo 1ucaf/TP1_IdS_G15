@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,32 +53,159 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AFIPController.cs" />
+    <Compile Include="Connected Services\AFIPWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\WrapperAutorizacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\202202282347087_InitialMigration.cs" />
-    <Compile Include="Migrations\202202282347087_InitialMigration.designer.cs">
-      <DependentUpon>202202282347087_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203010109058_sessions.cs" />
-    <Compile Include="Migrations\202203010109058_sessions.designer.cs">
-      <DependentUpon>202203010109058_sessions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203011512295_Sessions1.cs" />
-    <Compile Include="Migrations\202203011512295_Sessions1.designer.cs">
-      <DependentUpon>202203011512295_Sessions1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203011555101_Sessions_UserName.cs" />
-    <Compile Include="Migrations\202203011555101_Sessions_UserName.designer.cs">
-      <DependentUpon>202203011555101_Sessions_UserName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203011643348_Sessions_DateTime.cs" />
-    <Compile Include="Migrations\202203011643348_Sessions_DateTime.designer.cs">
-      <DependentUpon>202203011643348_Sessions_DateTime.cs</DependentUpon>
+    <Compile Include="Migrations\202203032231096_InitialMigration.cs" />
+    <Compile Include="Migrations\202203032231096_InitialMigration.designer.cs">
+      <DependentUpon>202203032231096_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\AFIPWebService\service.wsdl" />
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.CbteTipoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.ConceptoTipoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.DocTipoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.DummyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAEAConsultarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAEAGetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAEARegInformativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAEAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAEASinMovConsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAEASinMovimientoConsultarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAEASinMovimientoInformarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAEASinMovResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAEASolicitarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECAESolicitarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECompConsultaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECompConsultarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECompTotXRequestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECompUltimoAutorizadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FECotizacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEDummyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEPaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEParamGetCotizacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEParamGetPtosVentaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEParamGetTiposCbteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEParamGetTiposConceptoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEParamGetTiposDocResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEParamGetTiposIvaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEParamGetTiposMonedasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEParamGetTiposOpcionalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEParamGetTiposPaisesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEParamGetTiposTributosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FEPtoVentaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FERecuperaLastCbteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FERegXReqResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.FETributoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.IvaTipoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.MonedaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AFIPWebService\TP1IdS_G15AccesoADatos.AFIPWebService.OpcionalTipoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WrapperAutorizacion\LoginService.wsdl" />
+    <None Include="Connected Services\WrapperAutorizacion\LoginService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WrapperAutorizacion\LoginService1.wsdl" />
+    <None Include="Connected Services\WrapperAutorizacion\LoginService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WrapperAutorizacion\LoginService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WrapperAutorizacion\TP1IdS_G15AccesoADatos.WrapperAutorizacion.Autorizacion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -86,21 +215,40 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202202282347087_InitialMigration.resx">
-      <DependentUpon>202202282347087_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202203032231096_InitialMigration.resx">
+      <DependentUpon>202203032231096_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203010109058_sessions.resx">
-      <DependentUpon>202203010109058_sessions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203011512295_Sessions1.resx">
-      <DependentUpon>202203011512295_Sessions1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203011555101_Sessions_UserName.resx">
-      <DependentUpon>202203011555101_Sessions_UserName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203011643348_Sessions_DateTime.resx">
-      <DependentUpon>202203011643348_Sessions_DateTime.cs</DependentUpon>
-    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AFIPWebService\" />
+    <WCFMetadataStorage Include="Connected Services\WrapperAutorizacion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WrapperAutorizacion\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WrapperAutorizacion\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WrapperAutorizacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AFIPWebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AFIPWebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AFIPWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
