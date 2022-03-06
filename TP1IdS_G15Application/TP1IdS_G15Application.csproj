@@ -65,6 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RubrosManager.cs" />
+    <Compile Include="ColorManager.cs" />
     <Compile Include="Model\LineaDeVentaDTO.cs" />
     <Compile Include="Model\LoginRequest.cs" />
     <Compile Include="MarcaManager.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\TokenDTO.cs" />
     <Compile Include="SessionsManager.cs" />
+    <Compile Include="TalleManager.cs" />
     <Compile Include="TokenHandlers\TokenGenerator.cs" />
     <Compile Include="TokenHandlers\TokenManager.cs" />
     <Compile Include="TokenHandlers\TokenValidationHandler.cs" />
