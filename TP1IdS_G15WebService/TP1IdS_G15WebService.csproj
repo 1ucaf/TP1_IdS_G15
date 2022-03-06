@@ -233,8 +233,6 @@
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\RubrosController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
-    <Compile Include="Controllers\ColoresController.cs" />
-    <Compile Include="Controllers\TallesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="CustomHTTPAttributes\CustomAuthorizationAttribute.cs" />
