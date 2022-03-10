@@ -41,7 +41,7 @@ namespace TP1IdS_G15WebService.Controllers
 
         // PUT: api/Marcas/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMarca(int id, Marca marca)
+        public IHttpActionResult PutMarca(int id, [FromBody] Marca marca)
         {
             if (!ModelState.IsValid)
             {
@@ -53,10 +53,10 @@ namespace TP1IdS_G15WebService.Controllers
                 return BadRequest();
             }
 
-
             try
             {
-                AppLayer.SaveMarca(marca);
+                Marca Marca = AppLayer.SaveMarca(marca);
+                return Ok(Marca);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -70,7 +70,6 @@ namespace TP1IdS_G15WebService.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Marcas

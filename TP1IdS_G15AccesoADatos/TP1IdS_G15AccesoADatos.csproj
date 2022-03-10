@@ -77,6 +77,10 @@
     <Compile Include="Migrations\202203100143540_TipoFacturaNroAFIP.designer.cs">
       <DependentUpon>202203100143540_TipoFacturaNroAFIP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203102344008_ClienteCamposFaltantes.cs" />
+    <Compile Include="Migrations\202203102344008_ClienteCamposFaltantes.designer.cs">
+      <DependentUpon>202203102344008_ClienteCamposFaltantes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -262,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203100143540_TipoFacturaNroAFIP.resx">
       <DependentUpon>202203100143540_TipoFacturaNroAFIP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203102344008_ClienteCamposFaltantes.resx">
+      <DependentUpon>202203102344008_ClienteCamposFaltantes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
