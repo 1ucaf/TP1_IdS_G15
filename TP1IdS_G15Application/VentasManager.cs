@@ -15,17 +15,18 @@ namespace TP1IdS_G15Application
     {
         private DataContext db = new DataContext();
 
-        public Venta Save(VentaDTO venta, string token)
+        public VentaDTO Save(VentaDTO venta, string token)
         {
             Venta Venta;
             try
             {
-                Cliente c = db.Clientes.Find(venta.ClienteId);
+                Cliente c = db.Clientes.Find(venta.ClienteCUIT);
                 string userName = TokenManager.ValidateToken(token);
                 Sesion s = db.Sesiones.Where(se => (se.UserName == userName && se.IsActive)).FirstOrDefault();
                 PuntoDeVenta pdv = s.PuntoDeVenta;
                 Empleado e = db.Empleados.Where(em => em.UserName == userName).FirstOrDefault();
-                TipoFactura tf = db.TiposDeFactura.Find(venta.TipoFacturaId);
+                //TipoFactura tf = db.TiposDeFactura.Find(venta.TipoFacturaId); //cambiar
+                TipoFactura tf = db.TiposDeFactura.Where(d=> d.NroTipoFacturaAFIP == venta.TipoFacturaId).FirstOrDefault();
                 List<LineaDeVenta> LineasDeVenta = new List<LineaDeVenta>();
                 decimal MontoTotal = 0;
                 foreach(LineaDeVentaDTO LdVdto in venta.LineasDeVenta)
@@ -41,31 +42,40 @@ namespace TP1IdS_G15Application
                     MontoTotal += ldv.SubTotal;
                     LineasDeVenta.Add(ldv);
                 }
+                long NroFacturaAfip = 0;
+                if (db.Ventas.Count() > 0)
+                {
+                    NroFacturaAfip = db.Ventas.Max(v => v.NroFacturaAfip) + 1;
+                }
 
                 Venta = new Venta()
                 {
                     Id = 0,
-                    ClienteId = venta.ClienteId,
+                    Cuit = venta.ClienteCUIT,
                     Cliente = c,
                     PuntoDeVenta = pdv,
                     PuntoDeVentaId = pdv.Id,
                     Vendedor = e,
-                    EmpleadoId = e.Legajo,
+                    Legajo = e.Legajo,
                     Fecha = DateTime.Now,
                     MedioDePago = venta.MedioDePago,
                     TipoFactura = tf,
                     TipoFacturaId = venta.TipoFacturaId,
                     Monto = (decimal)MontoTotal,
                     LineasDeVentas = LineasDeVenta,
-                    NroFacturaAfip = 0,
+                    NroFacturaAfip = NroFacturaAfip,
                 };
+
+                AFIPController.FE(Venta);
+
                 db.Ventas.Add(Venta);
                 db.SaveChanges();
-                return Venta;
+                venta.Id = Venta.Id;
+                return venta;
             }
             catch (Exception e)
             {
-                return null;
+                throw e;
             }
         }
 

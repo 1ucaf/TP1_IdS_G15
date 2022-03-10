@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using TP1IdS_G15Application;
 using TP1IdS_G15Application.Model;
+using TP1IdS_G15Modelo.Entidades;
 
 namespace TP1IdS_G15WebService.Controllers
 {
@@ -25,17 +26,17 @@ namespace TP1IdS_G15WebService.Controllers
         }
 
         // POST: api/Ventas
-        public void Post([FromBody]VentaDTO venta)
+        public HttpResponseMessage Post([FromBody]VentaDTO venta)
         {
-            string token = "";
             try
             {
-                token = Request.Headers.GetValues("Authorization").First();
-                AppLayer.Save(venta, token);
+                string token = Request.Headers.GetValues("Authorization").First();
+                VentaDTO Venta = AppLayer.Save(venta, token);
+                return Request.CreateResponse(HttpStatusCode.OK, Venta);
             }
             catch(Exception e)
             {
-
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
             }
         }
 

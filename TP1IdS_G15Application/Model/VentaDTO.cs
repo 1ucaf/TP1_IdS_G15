@@ -13,7 +13,7 @@ namespace TP1IdS_G15Application.Model
         //public long NroFacturaAfip { get; set; }
         public int PuntoDeVentaId { get; set; }
         public MedioDePago MedioDePago { get; set; }
-        public int ClienteId { get; set; }
+        public string ClienteCUIT { get; set; }
         public string User { get; set; }
         public int TipoFacturaId { get; set; }
         public List<LineaDeVentaDTO> LineasDeVenta { get; set; }

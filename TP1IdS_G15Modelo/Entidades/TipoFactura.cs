@@ -11,6 +11,7 @@ namespace TP1IdS_G15Modelo.Entidades
     {
         [Key]
         public int Id { get; set; }
+        public int NroTipoFacturaAFIP { get; set; }
         public string Descripcion { get; set; }
     }
 }

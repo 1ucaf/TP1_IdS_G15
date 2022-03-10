@@ -11,7 +11,7 @@ namespace TP1IdS_G15Modelo.Entidades
     {
         [Key]
         public int Id { get; set; }
-        public long NumeroPDV { get; set; }
+        public int NumeroPDV { get; set; }
         public int SucursalId { get; set; }
         public virtual Sucursal Sucursal { get; set; }
     }

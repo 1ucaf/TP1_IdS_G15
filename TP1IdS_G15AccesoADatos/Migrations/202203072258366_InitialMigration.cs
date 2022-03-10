@@ -101,7 +101,7 @@
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Marcas", t => t.MarcaId, cascadeDelete: true)
                 .ForeignKey("dbo.Rubros", t => t.RubroId, cascadeDelete: true)
-                .Index(t => t.CodigoDeBarra, unique: true, clustered: false)
+                .Index(t => t.CodigoDeBarra, unique: true)
                 .Index(t => t.MarcaId)
                 .Index(t => t.RubroId);
             
@@ -153,21 +153,19 @@
                         NroFacturaAfip = c.Long(nullable: false),
                         PuntoDeVentaId = c.Int(nullable: false),
                         MedioDePago = c.Int(nullable: false),
-                        ClienteId = c.Int(nullable: false),
-                        EmpleadoId = c.Int(nullable: false),
+                        Cuit = c.String(maxLength: 128),
+                        Legajo = c.Int(nullable: false),
                         TipoFacturaId = c.Int(nullable: false),
-                        Cliente_Cuit = c.String(maxLength: 128),
-                        Vendedor_Legajo = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Clientes", t => t.Cliente_Cuit)
+                .ForeignKey("dbo.Clientes", t => t.Cuit)
                 .ForeignKey("dbo.PuntosDeVenta", t => t.PuntoDeVentaId, cascadeDelete: true)
                 .ForeignKey("dbo.TiposDeFactura", t => t.TipoFacturaId, cascadeDelete: true)
-                .ForeignKey("dbo.Empleados", t => t.Vendedor_Legajo)
+                .ForeignKey("dbo.Empleados", t => t.Legajo, cascadeDelete: false)
                 .Index(t => t.PuntoDeVentaId)
-                .Index(t => t.TipoFacturaId)
-                .Index(t => t.Cliente_Cuit)
-                .Index(t => t.Vendedor_Legajo);
+                .Index(t => t.Cuit)
+                .Index(t => t.Legajo)
+                .Index(t => t.TipoFacturaId);
             
             CreateTable(
                 "dbo.LineaDeVentas",
@@ -216,12 +214,12 @@
         {
             DropForeignKey("dbo.Sesiones", "UserName", "dbo.Users");
             DropForeignKey("dbo.Sesiones", "PuntoDeVentaId", "dbo.PuntosDeVenta");
-            DropForeignKey("dbo.Ventas", "Vendedor_Legajo", "dbo.Empleados");
+            DropForeignKey("dbo.Ventas", "Legajo", "dbo.Empleados");
             DropForeignKey("dbo.Ventas", "TipoFacturaId", "dbo.TiposDeFactura");
             DropForeignKey("dbo.Ventas", "PuntoDeVentaId", "dbo.PuntosDeVenta");
             DropForeignKey("dbo.LineaDeVentas", "Venta_Id", "dbo.Ventas");
             DropForeignKey("dbo.LineaDeVentas", "ProductoId", "dbo.Productos");
-            DropForeignKey("dbo.Ventas", "Cliente_Cuit", "dbo.Clientes");
+            DropForeignKey("dbo.Ventas", "Cuit", "dbo.Clientes");
             DropForeignKey("dbo.Empleados", "UserName", "dbo.Users");
             DropForeignKey("dbo.ProductosEnStock", "TalleId", "dbo.Talles");
             DropForeignKey("dbo.ProductosEnStock", "SucursalId", "dbo.Sucursales");
@@ -235,9 +233,9 @@
             DropIndex("dbo.Sesiones", new[] { "UserName" });
             DropIndex("dbo.LineaDeVentas", new[] { "Venta_Id" });
             DropIndex("dbo.LineaDeVentas", new[] { "ProductoId" });
-            DropIndex("dbo.Ventas", new[] { "Vendedor_Legajo" });
-            DropIndex("dbo.Ventas", new[] { "Cliente_Cuit" });
             DropIndex("dbo.Ventas", new[] { "TipoFacturaId" });
+            DropIndex("dbo.Ventas", new[] { "Legajo" });
+            DropIndex("dbo.Ventas", new[] { "Cuit" });
             DropIndex("dbo.Ventas", new[] { "PuntoDeVentaId" });
             DropIndex("dbo.Productos", new[] { "RubroId" });
             DropIndex("dbo.Productos", new[] { "MarcaId" });
