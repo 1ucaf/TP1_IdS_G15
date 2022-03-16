@@ -39,6 +39,9 @@ namespace TP1IdS_G15AccesoADatos
                 .ToTable("TiposDeFactura");
             modelBuilder.Entity<Cliente>()
                 .ToTable("Clientes");
+            modelBuilder.Entity<Cliente>()
+                .HasIndex(c => c.Cuit)
+                .IsUnique();
             modelBuilder.Entity<Sucursal>()
                 .ToTable("Sucursales");
             modelBuilder.Entity<PuntoDeVenta>()
