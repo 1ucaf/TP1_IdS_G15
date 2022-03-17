@@ -24,9 +24,9 @@ namespace TP1IdS_G15AccesoADatos
             //Auth.Cuit = _Ticket.Cuit;
             Auth.Cuit = 20000000001;
             //Auth.Token = _Ticket.Token;
-            Auth.Token = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pgo8c3NvIHZlcnNpb249IjIuMCI+CiAgICA8aWQgc3JjPSJDTj13c2FhaG9tbywgTz1BRklQLCBDPUFSLCBTRVJJQUxOVU1CRVI9Q1VJVCAzMzY5MzQ1MDIzOSIgZHN0PSJDTj13c2ZlLCBPPUFGSVAsIEM9QVIiIHVuaXF1ZV9pZD0iMTcwODYyMTYwMiIgZ2VuX3RpbWU9IjE2NDY5MzM4OTkiIGV4cF90aW1lPSIxNjQ2OTc3MTU5Ii8+CiAgICA8b3BlcmF0aW9uIHR5cGU9ImxvZ2luIiB2YWx1ZT0iZ3JhbnRlZCI+CiAgICAgICAgPGxvZ2luIGVudGl0eT0iMzM2OTM0NTAyMzkiIHNlcnZpY2U9IndzZmUiIHVpZD0iU0VSSUFMTlVNQkVSPUNVSVQgMjAyNTk5MjcxNjIsIENOPXNnZWZqdjA0IiBhdXRobWV0aG9kPSJjbXMiIHJlZ21ldGhvZD0iMjIiPgogICAgICAgICAgICA8cmVsYXRpb25zPgogICAgICAgICAgICAgICAgPHJlbGF0aW9uIGtleT0iMjAwMDAwMDAwMDEiIHJlbHR5cGU9IjQiLz4KICAgICAgICAgICAgICAgIDxyZWxhdGlvbiBrZXk9IjIwMTc2MTM3NzU1IiByZWx0eXBlPSI0Ii8+CiAgICAgICAgICAgICAgICA8cmVsYXRpb24ga2V5PSIyMDI1OTkyNzE2MiIgcmVsdHlwZT0iNCIvPgogICAgICAgICAgICAgICAgPHJlbGF0aW9uIGtleT0iMjAzMjIwNjczNTciIHJlbHR5cGU9IjQiLz4KICAgICAgICAgICAgICAgIDxyZWxhdGlvbiBrZXk9IjIwMzYyMjQxODA1IiByZWx0eXBlPSI0Ii8+CiAgICAgICAgICAgICAgICA8cmVsYXRpb24ga2V5PSIyMDM3MTkxODgxOCIgcmVsdHlwZT0iNCIvPgogICAgICAgICAgICAgICAgPHJlbGF0aW9uIGtleT0iMzA3MTIwMzQ2MDkiIHJlbHR5cGU9IjQiLz4KICAgICAgICAgICAgICAgIDxyZWxhdGlvbiBrZXk9IjMzNzA4ODc5MjI5IiByZWx0eXBlPSI0Ii8+CiAgICAgICAgICAgIDwvcmVsYXRpb25zPgogICAgICAgIDwvbG9naW4+CiAgICA8L29wZXJhdGlvbj4KPC9zc28+Cg==";
+            Auth.Token = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pgo8c3NvIHZlcnNpb249IjIuMCI+CiAgICA8aWQgc3JjPSJDTj13c2FhaG9tbywgTz1BRklQLCBDPUFSLCBTRVJJQUxOVU1CRVI9Q1VJVCAzMzY5MzQ1MDIzOSIgZHN0PSJDTj13c2ZlLCBPPUFGSVAsIEM9QVIiIHVuaXF1ZV9pZD0iMTMzNDczNDc4NCIgZ2VuX3RpbWU9IjE2NDc1MjM2MDEiIGV4cF90aW1lPSIxNjQ3NTY2ODYxIi8+CiAgICA8b3BlcmF0aW9uIHR5cGU9ImxvZ2luIiB2YWx1ZT0iZ3JhbnRlZCI+CiAgICAgICAgPGxvZ2luIGVudGl0eT0iMzM2OTM0NTAyMzkiIHNlcnZpY2U9IndzZmUiIHVpZD0iU0VSSUFMTlVNQkVSPUNVSVQgMjAyNTk5MjcxNjIsIENOPXNnZWZqdjA0IiBhdXRobWV0aG9kPSJjbXMiIHJlZ21ldGhvZD0iMjIiPgogICAgICAgICAgICA8cmVsYXRpb25zPgogICAgICAgICAgICAgICAgPHJlbGF0aW9uIGtleT0iMjAwMDAwMDAwMDEiIHJlbHR5cGU9IjQiLz4KICAgICAgICAgICAgICAgIDxyZWxhdGlvbiBrZXk9IjIwMTc2MTM3NzU1IiByZWx0eXBlPSI0Ii8+CiAgICAgICAgICAgICAgICA8cmVsYXRpb24ga2V5PSIyMDI1OTkyNzE2MiIgcmVsdHlwZT0iNCIvPgogICAgICAgICAgICAgICAgPHJlbGF0aW9uIGtleT0iMjAzMjIwNjczNTciIHJlbHR5cGU9IjQiLz4KICAgICAgICAgICAgICAgIDxyZWxhdGlvbiBrZXk9IjIwMzYyMjQxODA1IiByZWx0eXBlPSI0Ii8+CiAgICAgICAgICAgICAgICA8cmVsYXRpb24ga2V5PSIyMDM3MTkxODgxOCIgcmVsdHlwZT0iNCIvPgogICAgICAgICAgICAgICAgPHJlbGF0aW9uIGtleT0iMzA3MTIwMzQ2MDkiIHJlbHR5cGU9IjQiLz4KICAgICAgICAgICAgICAgIDxyZWxhdGlvbiBrZXk9IjMzNzA4ODc5MjI5IiByZWx0eXBlPSI0Ii8+CiAgICAgICAgICAgIDwvcmVsYXRpb25zPgogICAgICAgIDwvbG9naW4+CiAgICA8L29wZXJhdGlvbj4KPC9zc28+Cg==";
             //Auth.Sign = _Ticket.Sign;
-            Auth.Sign = "ihx4KFI2eekkCQM7QsS13UHfKFRdg7pN3qaKlxOV8T19526ktZ36vj1dIHxvYQ5J2GggasjgMXjHOm58KL5Gp7oZXChfnGd6yr0UUPnvOD8Hg5oQWnjz2/rzHS+ntIVGKe2KD+V+1tqINgoF/rOWMOOLgPVQgJD7eIq3XWZJD5M=";
+            Auth.Sign = "Nl2L9q+R5SN3wlXOurVmtITLXmJuwJRJiFev7MT1VKLTGKWxY5MxlfpSCy6bMYX3D+NWTcaP36bBAUj4DDMJbBK1UFj8lKuww0Kb+Mf1+Hvxihk0fRI24wNTB5NCCvOV688MeYNRCwDg9+keCvtIrjnXnIhqvLx1NJg6WK7ZlP0=";
 
             var FECAERequest = new FECAERequest();
 
@@ -40,10 +40,10 @@ namespace TP1IdS_G15AccesoADatos
             FECAEDetRequest[] FeDetReq;
             var FeDetReqList = new List<FECAEDetRequest>();
 
-            if (venta.NroFacturaAfip == 0)
-            {
+            //if (venta.NroFacturaAfip == 0)
+            //{
                 venta.NroFacturaAfip = GetUltimoNroCbteAFIP(Auth, venta.PuntoDeVenta.NumeroPDV, venta.TipoFacturaId) + 1;
-            }
+            //}
 
             foreach (LineaDeVenta ldv in venta.LineasDeVentas)
             {
@@ -62,7 +62,7 @@ namespace TP1IdS_G15AccesoADatos
                 Det.ImpTotConc = 0;
                 Det.ImpNeto = (double)ldv.Producto.NetoGravado;
                 Det.ImpOpEx = 0;
-                Det.ImpIVA = (double)ldv.Producto.IVA;
+                Det.ImpIVA = (double)(ldv.Producto.IVA * ldv.Cantidad);
                 Det.ImpTrib = 0;
 
                 FeDetReqList.Add(Det);
@@ -71,6 +71,10 @@ namespace TP1IdS_G15AccesoADatos
             FECAERequest.FeDetReq = FeDetReq;
 
             var Response = webReference.FECAESolicitar(Auth, FECAERequest);
+            if (Response.Errors != null)
+            {
+                throw new Exception();
+            }
 
             //MessageBox.Show(Response.FeDetResp[0].Resultado);
         }
