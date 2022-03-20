@@ -36,9 +36,9 @@ namespace TP1IdS_G15WebService.Controllers
 
         // GET: api/Productos/5
         [ResponseType(typeof(Producto))]
-        public IHttpActionResult GetProducto(int id)
+        public IHttpActionResult GetProducto(string CodigoDeBarra)
         {
-            var producto = AppLayer.FindProducto(id);
+            var producto = AppLayer.FindProducto(CodigoDeBarra);
             if (producto == null)
             {
                 return NotFound();

@@ -53,9 +53,9 @@ namespace TP1IdS_G15Application
             return producto;
         }
 
-        public Producto FindProducto(int id)
+        public Producto FindProducto(string CodigoDeBarra)
         {
-            Producto producto = db.Productos.Find(id);
+            Producto producto = db.Productos.Where(p => p.CodigoDeBarra == CodigoDeBarra).FirstOrDefault();
             return producto;
         }
         public List<Producto> GetProductos()
