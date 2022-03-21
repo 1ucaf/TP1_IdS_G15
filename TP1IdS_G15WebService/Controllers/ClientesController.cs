@@ -22,16 +22,19 @@ namespace TP1IdS_G15WebService.Controllers
         private ClientesManager AppLayer = new ClientesManager();
 
         [HttpGet]
+        [Route("")]
         public HttpResponseMessage GetClientes()
         {
             return Request.CreateResponse(HttpStatusCode.OK, AppLayer.GetAll());
         }
         [HttpGet]
+        [Route("")]
         public HttpResponseMessage GetCliente(string CUIT)
         {
             return Request.CreateResponse(HttpStatusCode.OK, AppLayer.Get(CUIT));
         }
         [HttpPost]
+        [Route("")]
         public HttpResponseMessage PostCliente([FromBody] Cliente Cliente)
         {
             HttpResponseMessage Response;
@@ -47,6 +50,7 @@ namespace TP1IdS_G15WebService.Controllers
             return Response;
         }
         [HttpPut]
+        [Route("")]
         public HttpResponseMessage PutCliente(string Cuit, [FromBody] Cliente Cliente)
         {
             HttpResponseMessage Response;
@@ -73,6 +77,7 @@ namespace TP1IdS_G15WebService.Controllers
             return Response;
         }
         [HttpDelete]
+        [Route("")]
         public HttpResponseMessage DeleteCliente(string Cuit)
         {
             HttpResponseMessage Response;
