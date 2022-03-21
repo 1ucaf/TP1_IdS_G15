@@ -23,18 +23,19 @@ namespace TP1IdS_G15Application
                 Password = superEmpleadoDTO.Password,
                 TipoUsuario = superEmpleadoDTO.TipoUsuario
 
-            }
-            ;
+            };
+
             var empleado = new Empleado()
             {
                 Nombre = superEmpleadoDTO.ApellidoYNombre,
                 Legajo = superEmpleadoDTO.Legajo,
-                User = usuario
-            }
-            ;
+                User = usuario,
+                Sucursal = db.Sucursales.First()
+            };
 
             db.Empleados.Add(empleado);
             db.Users.Add(usuario);
+            db.SaveChanges();
 
             return superEmpleadoDTO;
         }

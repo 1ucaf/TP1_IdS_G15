@@ -15,23 +15,28 @@ using TP1IdS_G15Modelo.Entidades;
 
 namespace TP1IdS_G15WebService.Controllers
 {
-  public class SuperEmpleadoController : ApiController
+    [RoutePrefix("Usuarios")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class SuperEmpleadoController : ApiController
     {
         private SuperEmpleadoManager AppLayer = new SuperEmpleadoManager();
 
         [HttpGet]
+        [Route("")]
         public HttpResponseMessage GetEmpleados()
         {
             return Request.CreateResponse(HttpStatusCode.OK, AppLayer.GetEmpleados());
         }
         [HttpGet]
+        [Route("")]
         public HttpResponseMessage GetEmpleado(string Legajo)
         {
             var legajo = int.Parse(Legajo);
             return Request.CreateResponse(HttpStatusCode.OK, AppLayer.FindEmpleado(legajo));
         }
         [HttpPost]
-        public HttpResponseMessage PostCliente([FromBody] SuperEmpleadoDTO superEmpleado)
+        [Route("")]
+        public HttpResponseMessage PostEmpleado([FromBody] SuperEmpleadoDTO superEmpleado)
         {
             HttpResponseMessage Response;
             if (ModelState.IsValid)
@@ -46,6 +51,7 @@ namespace TP1IdS_G15WebService.Controllers
             return Response;
         }
         [HttpPut]
+        [Route("")]
         public HttpResponseMessage PutEmpleado(string Legajo, [FromBody] SuperEmpleadoDTO superEmpleadoDTO)
         {
             int legajo = int.Parse(Legajo);
@@ -73,6 +79,7 @@ namespace TP1IdS_G15WebService.Controllers
             return Response;
         }
         [HttpDelete]
+        [Route("")]
         public HttpResponseMessage DeleteEmpleado(string legajo)
         {
             HttpResponseMessage Response;
