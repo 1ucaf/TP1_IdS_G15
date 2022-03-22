@@ -52,13 +52,15 @@ namespace TP1IdS_G15Application
 
             db.Empleados.Remove(empleado);
             db.Users.Remove(empleado.User);
+            db.SaveChanges();
 
             var superEmpleado = new SuperEmpleadoDTO()
             {
                 ApellidoYNombre = empleado.Nombre,
                 TipoUsuario = empleado.User.TipoUsuario,
                 Legajo = empleado.Legajo,
-                UserName = empleado.User.UserName
+                UserName = empleado.User.UserName,
+                Password = empleado.User.Password
 
             };
 
@@ -83,7 +85,9 @@ namespace TP1IdS_G15Application
                 Password = superEmpleadoDTO.Password,
                 Email = superEmpleadoDTO.Email,
                 TipoUsuario = superEmpleadoDTO.TipoUsuario,
-                UserName = superEmpleadoDTO.UserName
+                UserName = superEmpleadoDTO.UserName,
+                
+
 
             };
 
