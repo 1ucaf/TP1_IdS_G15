@@ -9,6 +9,6 @@ namespace TP1IdS_G15Application.Model
     public class LineaDeVentaDTO
     {
         public int Cantidad { get; set; }
-        public int ProductoId { get; set; }
+        public string CodigoDeBarra { get; set; }
     }
 }

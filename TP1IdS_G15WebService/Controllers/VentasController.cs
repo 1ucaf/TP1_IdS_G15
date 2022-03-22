@@ -4,12 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using TP1IdS_G15Application;
 using TP1IdS_G15Application.Model;
 using TP1IdS_G15Modelo.Entidades;
 
 namespace TP1IdS_G15WebService.Controllers
 {
+
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("ventas")]
     public class VentasController : ApiController
     {
         VentasManager AppLayer = new VentasManager();
@@ -26,6 +30,8 @@ namespace TP1IdS_G15WebService.Controllers
         }
 
         // POST: api/Ventas
+        [HttpPost]
+        [Route("")]
         public HttpResponseMessage Post([FromBody]VentaDTO venta)
         {
             try

@@ -31,10 +31,10 @@ namespace TP1IdS_G15Application
                 decimal MontoTotal = 0;
                 foreach(LineaDeVentaDTO LdVdto in venta.LineasDeVenta)
                 {
-                    var p = db.Productos.Find(LdVdto.ProductoId);
+                    var p = db.Productos.Where(pr => pr.CodigoDeBarra == LdVdto.CodigoDeBarra).First();
                     LineaDeVenta ldv = new LineaDeVenta()
                     {
-                        ProductoId = LdVdto.ProductoId,
+                        ProductoId = p.Id,
                         Producto = p,
                         MontoUnitario = p.PrecioVenta,
                         Cantidad = LdVdto.Cantidad,
