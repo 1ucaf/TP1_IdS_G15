@@ -95,18 +95,16 @@ namespace TP1IdS_G15Application
         }
 
 
-        public object FindEmpleado(int legajo)
+        public SuperEmpleadoDTO FindEmpleado(int legajo)
         {
             var empleado = db.Empleados.Find(legajo);
-            var e = new
-            {
-                ApellidoYNombre = empleado.Nombre,
-                Legajo = empleado.Legajo,
-                UserName = empleado.User.UserName,
-                Email = empleado.User.Email,
-                TipoUsuario = empleado.User.TipoUsuario.ToString(),
-                Password = empleado.User.Password,
-            };
+            var e = new SuperEmpleadoDTO();
+            e.ApellidoYNombre = empleado.Nombre;
+            e.TipoUsuario = empleado.User.TipoUsuario;
+            e.Legajo = empleado.Legajo;
+            e.UserName = empleado.User.UserName;
+            e.Email = empleado.User.Email;
+            e.Password = empleado.User.Password;
 
             return e;
         }
