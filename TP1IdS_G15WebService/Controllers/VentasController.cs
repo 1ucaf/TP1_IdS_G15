@@ -8,6 +8,7 @@ using System.Web.Http.Cors;
 using TP1IdS_G15Application;
 using TP1IdS_G15Application.Model;
 using TP1IdS_G15Modelo.Entidades;
+using TP1IdS_G15WebService.CustomHTTPAttributes;
 
 namespace TP1IdS_G15WebService.Controllers
 {
@@ -18,9 +19,20 @@ namespace TP1IdS_G15WebService.Controllers
     {
         VentasManager AppLayer = new VentasManager();
         // GET: api/Ventas
-        public IEnumerable<string> Get()
+        [HttpGet]
+        [Route("")]
+        [CustomAuthorization("ROLES_ADMINISTRADOR")]
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            List<Venta> ventas = AppLayer.GetVentas();
+            var ventasConverted = ventas.Select(venta => new {
+                Id = venta.Id,
+                Cliente = venta.Cliente.NombreApellido,
+                Vendedor = venta.Vendedor.Nombre,
+                Fecha = venta.Fecha,
+                Monto = venta.Monto,
+            }).ToList();
+            return Request.CreateResponse(HttpStatusCode.OK, ventasConverted);
         }
 
         // GET: api/Ventas/5
@@ -32,6 +44,7 @@ namespace TP1IdS_G15WebService.Controllers
         // POST: api/Ventas
         [HttpPost]
         [Route("")]
+        [CustomAuthorization("ROLES_VENDEDOR")]
         public HttpResponseMessage Post([FromBody]VentaDTO venta)
         {
             try

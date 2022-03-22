@@ -79,27 +79,14 @@ namespace TP1IdS_G15Application
             }
         }
 
-        public Marca DeleteMarca(int id)
-        {
-            Marca Marca = db.Marcas.Find(id);
-            if (Marca == null)
-            {
-                return null;
-            }
-
-            db.Marcas.Remove(Marca);
-            db.SaveChanges();
-            return Marca;
-        }
-
-        public Marca FindMarca(int id)
+        public Marca FindVenta(int id)
         {
             Marca Marca = db.Marcas.Find(id);
             return Marca;
         }
-        public List<Marca> GetMarcas()
+        public List<Venta> GetVentas()
         {
-            return db.Marcas.ToList();
+            return db.Ventas.ToList();
         }
 
         public bool MarcaExists(int id)
