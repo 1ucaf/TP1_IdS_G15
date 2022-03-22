@@ -79,19 +79,19 @@ namespace TP1IdS_G15Application
             }
         }
 
-        public Marca FindVenta(int id)
+        public Venta FindVenta(int id)
         {
-            Marca Marca = db.Marcas.Find(id);
-            return Marca;
+            Venta Venta = db.Ventas.Find(id);
+            return Venta;
         }
         public List<Venta> GetVentas()
         {
             return db.Ventas.ToList();
         }
 
-        public bool MarcaExists(int id)
+        public bool VentaExists(int id)
         {
-            return db.Marcas.Count(e => e.Id == id) > 0;
+            return db.Ventas.Count(e => e.Id == id) > 0;
         }
 
         public void Dispose()

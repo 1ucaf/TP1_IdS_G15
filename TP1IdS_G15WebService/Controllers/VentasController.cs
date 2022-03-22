@@ -29,16 +29,39 @@ namespace TP1IdS_G15WebService.Controllers
                 Id = venta.Id,
                 Cliente = venta.Cliente.NombreApellido,
                 Vendedor = venta.Vendedor.Nombre,
-                Fecha = venta.Fecha,
+                Fecha = venta.Fecha.ToString("dd-MM-yyyy"),
                 Monto = venta.Monto,
             }).ToList();
             return Request.CreateResponse(HttpStatusCode.OK, ventasConverted);
         }
 
         // GET: api/Ventas/5
-        public string Get(int id)
+        public HttpResponseMessage Get(int id)
         {
-            return "value";
+            Venta venta = AppLayer.FindVenta(id);
+            var lineasdeventaReturn = venta.LineasDeVentas.Select(ldv => new
+            {
+                Id = ldv.Id,
+                ProductoId = ldv.ProductoId,
+                Producto = ldv.Producto.Descripcion,
+                ldv.MontoUnitario,
+                ldv.Cantidad,
+                ldv.SubTotal,
+            }).ToList();
+            var ventaReturn = new
+            {
+                CuitCliente = venta.Cliente.Cuit,
+                NombreCliente = venta.Cliente.NombreApellido,
+                Fecha = venta.Fecha.ToString("dd-MM-yyyy"),
+                Vendedor = venta.Vendedor.Nombre,
+                LegajoVendedor = venta.Legajo,
+                MontoTotal = venta.Monto,
+                Sucursal = venta.PuntoDeVenta.Sucursal.Nombre,
+                PuntoDeVenta = venta.PuntoDeVenta.NumeroPDV,
+                TipoFactura = venta.TipoFactura.Descripcion,
+                LineasDeVenta = lineasdeventaReturn,
+            };
+            return Request.CreateResponse(HttpStatusCode.OK, ventaReturn);
         }
 
         // POST: api/Ventas
