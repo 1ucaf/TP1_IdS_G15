@@ -19,6 +19,18 @@ namespace TP1IdS_G15Application
         {
             return db.Users.Find(userName);
         }
+        private string TryRetrievePdVId(string ipv4)
+        {
+            try
+            {
+                var pvid = ConfigurationManager.AppSettings.GetValues("origins:" + ipv4).FirstOrDefault();
+                return pvid;
+            }
+            catch(Exception)
+            {
+                throw new SettingsPropertyNotFoundException("No se reconoce el Punto de Venta. Es posible que su IP haya cambiado");
+            }
+        }
         public LoginResponse Authenticate (LoginRequest login)
         {
             User user = Find(login.Username);
@@ -32,7 +44,7 @@ namespace TP1IdS_G15Application
             if (isCredentialValid)
             {
                 var token = TokenGenerator.GenerateTokenJwt(login.Username);
-                string pdvid = ConfigurationManager.AppSettings.GetValues("origins:" + login.IPv4).FirstOrDefault();
+                string pdvid = TryRetrievePdVId(login.IPv4);
                 int puntoDeVentaId = Convert.ToInt32(pdvid);
                 PuntoDeVenta puntoDeVenta = db.PuntosDeVenta.Find(puntoDeVentaId);
                 var sesion = new Sesion()

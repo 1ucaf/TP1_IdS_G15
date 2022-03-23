@@ -110,15 +110,30 @@ namespace TP1IdS_G15WebService.Controllers
 
         // POST: api/Productos
         [HttpPost]
-        [Route("save")]
-        public HttpResponseMessage SaveProducto(ProductoDTO productoDTO)
+        [Route("")]
+        public HttpResponseMessage CreateNewProducto(ProductoDTO productoDTO)
         {
 
             if (!ModelState.IsValid)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, productoDTO);
             }
-            var producto = AppLayer.SaveProducto(productoDTO);
+            var producto = AppLayer.CreateNew(productoDTO);
+
+            return Request.CreateResponse(HttpStatusCode.OK, producto);
+        }
+
+        // PUT: api/Productos/
+        [HttpPut]
+        [Route("")]
+        public HttpResponseMessage UpdateProducto(ProductoDTO productoDTO)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, productoDTO);
+            }
+            var producto = AppLayer.Update(productoDTO);
 
             return Request.CreateResponse(HttpStatusCode.OK, producto);
         }

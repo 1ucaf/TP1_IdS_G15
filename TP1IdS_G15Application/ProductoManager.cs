@@ -14,29 +14,30 @@ namespace TP1IdS_G15Application
     {
         private DataContext db = new DataContext();
 
-        public Producto SaveProducto(ProductoDTO productoDTO)
+        public Producto CreateNew(ProductoDTO productoDTO)
         {
-
             var marca = db.Marcas.Where(marc => marc.Id == productoDTO.MarcaId).ToList().First();
             var rubro = db.Rubros.Where(rubr => rubr.Id == productoDTO.RubroId).ToList().First();
             Producto producto;
-            if (productoDTO.ProductoId == 0)
-            {
-                producto = new Producto(productoDTO.CodigoDeBarra, productoDTO.Descripcion, productoDTO.Costo, productoDTO.MargenDeGanancia, productoDTO.PorcentajeIVA, marca, rubro);
-                db.Productos.Add(producto);
-            }
-            else
-            {
-                producto = db.Productos.Find(productoDTO.CodigoDeBarra);
-                producto.Costo = productoDTO.Costo;
-                producto.Descripcion = productoDTO.Descripcion;
-                producto.MargenDeGanancia = productoDTO.MargenDeGanancia;
-                producto.MarcaId = productoDTO.MarcaId;
-                producto.Marca = marca;
-                producto.RubroId = productoDTO.RubroId;
-                producto.Rubro = rubro;
-                db.Entry(producto).State = EntityState.Modified;
-            }
+            producto = new Producto(productoDTO.CodigoDeBarra, productoDTO.Descripcion, productoDTO.Costo, productoDTO.MargenDeGanancia, productoDTO.PorcentajeIVA, marca, rubro);
+            db.Productos.Add(producto);
+            db.SaveChanges();
+            return producto;
+        }
+        public Producto Update(ProductoDTO productoDTO)
+        {
+            Producto producto;
+            producto = db.Productos.Find(productoDTO.CodigoDeBarra);
+            var marca = db.Marcas.Where(marc => marc.Id == productoDTO.MarcaId).ToList().First();
+            var rubro = db.Rubros.Where(rubr => rubr.Id == productoDTO.RubroId).ToList().First();
+            producto.Costo = productoDTO.Costo;
+            producto.Descripcion = productoDTO.Descripcion;
+            producto.MargenDeGanancia = productoDTO.MargenDeGanancia;
+            producto.MarcaId = productoDTO.MarcaId;
+            producto.Marca = marca;
+            producto.RubroId = productoDTO.RubroId;
+            producto.Rubro = rubro;
+            db.Entry(producto).State = EntityState.Modified;
             db.SaveChanges();
             return producto;
         }
