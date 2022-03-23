@@ -20,5 +20,20 @@ namespace TP1IdS_G15Modelo.Entidades
         public virtual Color Color { get; set; }
         public int TalleId { get; set; }
         public virtual Talle Talle { get; set; }
+        public void AddQuantity(int quantity)
+        {
+            Cantidad += quantity;
+        }
+        public void SubtractQuantity(int quantity)
+        {
+            if(quantity < Cantidad)
+            {
+                throw new ArgumentOutOfRangeException("No hay suficiente stock para restar esta cantidad");
+            }
+            else
+            {
+                Cantidad -= quantity;
+            }
+        }
     }
 }

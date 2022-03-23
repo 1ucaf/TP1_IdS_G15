@@ -22,7 +22,9 @@ namespace TP1IdS_G15WebService.Controllers
     public class ProductosController : ApiController
     {
         ProductoManager AppLayer = new ProductoManager();
+
         // GET: api/Productos
+        [Route("")]
         public HttpResponseMessage GetProducto()
         {
             return Request.CreateResponse(HttpStatusCode.OK, AppLayer.GetProductos().Select(p => new
@@ -35,6 +37,7 @@ namespace TP1IdS_G15WebService.Controllers
         }
 
         // GET: api/Productos/5
+        [Route("")]
         [ResponseType(typeof(Producto))]
         public IHttpActionResult GetProducto(string CodigoDeBarra)
         {
@@ -140,9 +143,11 @@ namespace TP1IdS_G15WebService.Controllers
 
         // DELETE: api/Productos/5
         [ResponseType(typeof(Producto))]
-        public IHttpActionResult DeleteProducto(int id)
+        [HttpDelete]
+        [Route("")]
+        public IHttpActionResult DeleteProducto(string CodigoDeBarra)
         {
-            var producto = AppLayer.DeleteProducto(id);
+            var producto = AppLayer.DeleteProducto(CodigoDeBarra);
             if(producto == null)
             {
                 return NotFound();

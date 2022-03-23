@@ -27,7 +27,7 @@ namespace TP1IdS_G15Application
         public Producto Update(ProductoDTO productoDTO)
         {
             Producto producto;
-            producto = db.Productos.Find(productoDTO.CodigoDeBarra);
+            producto = FindProducto(productoDTO.CodigoDeBarra);
             var marca = db.Marcas.Where(marc => marc.Id == productoDTO.MarcaId).ToList().First();
             var rubro = db.Rubros.Where(rubr => rubr.Id == productoDTO.RubroId).ToList().First();
             producto.Costo = productoDTO.Costo;
@@ -41,9 +41,9 @@ namespace TP1IdS_G15Application
             db.SaveChanges();
             return producto;
         }
-        public Producto DeleteProducto(int id)
+        public Producto DeleteProducto(string CodigoDeBarra)
         {
-            Producto producto = db.Productos.Find(id);
+            Producto producto = FindProducto(CodigoDeBarra);
             if (producto == null)
             {
                 return null;
