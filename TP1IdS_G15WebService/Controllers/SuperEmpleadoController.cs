@@ -60,7 +60,7 @@ namespace TP1IdS_G15WebService.Controllers
             {
                 Response = Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            else if (superEmpleadoDTO.Legajo == legajo)
+            else if (superEmpleadoDTO.Legajo != legajo)
             {
                 Response = Request.CreateResponse(HttpStatusCode.BadRequest, "El legajo ingresado dado en el parámetro no coincide con el legajo del empleado en el cuerpo del mensaje");
             }

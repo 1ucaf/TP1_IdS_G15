@@ -86,13 +86,9 @@ namespace TP1IdS_G15Application
                 Email = superEmpleadoDTO.Email,
                 TipoUsuario = superEmpleadoDTO.TipoUsuario,
                 UserName = superEmpleadoDTO.UserName,
-                
-
-
             };
 
             db.Entry(empleado).State = EntityState.Modified;
-            db.Entry(user).State = EntityState.Modified;
             db.SaveChanges();
 
             return superEmpleadoDTO;

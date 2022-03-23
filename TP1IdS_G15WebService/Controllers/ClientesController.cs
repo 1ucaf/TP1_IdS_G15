@@ -58,7 +58,7 @@ namespace TP1IdS_G15WebService.Controllers
             {
                 Response = Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            else if (Cliente.Cuit == Cuit)
+            else if (Cliente.Cuit != Cuit)
             {
                 Response = Request.CreateResponse(HttpStatusCode.BadRequest, "La CUIT dada en el parámetro no coincide con la CUIT del cliente en el Cuerpo del mensaje");
             }
